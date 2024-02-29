@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.ViewModel.ShoppingCartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <Grid BackgroundColor="DarkGray">
+        <Grid
+            Padding="10"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Margin="0,45,0,0">
+                <Label
+                    FontFamily="comforta"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="Корзина выбранных товаров"
+                    TextColor="White" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,40,0,0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <CollectionView
+                    x:Name="BooksList"
+                    ItemsSource="{Binding Books}"
+                    SelectedItem="{Binding SelectedBook}"
+                    SelectionChangedCommand="{Binding SelectionCommand}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Vertical"
+                            Span="1"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView CornerRadius="15">
+                                <Grid
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    HeightRequest="230"
+                                    WidthRequest="145">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <ImageButton
+                                        Grid.Row="0"
+                                        Aspect="Fill"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding RemoveBookCommand}"
+                                        HeightRequest="22"
+                                        HorizontalOptions="End"
+                                        Source="christ.png"
+                                        VerticalOptions="Start"
+                                        WidthRequest="22" />
+                                    <Image
+                                        Grid.Row="1"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding Book.Image}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="115" />
+                                    <Label
+                                        Grid.Row="2"
+                                        FontFamily="comforta"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="{Binding Book.Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="End"
+                                        WidthRequest="220" />
+                                    <Label
+                                        Grid.Row="2"
+                                        FontFamily="comforta"
+                                        HorizontalOptions="End"
+                                        Text="{Binding Book.Price, StringFormat='{0} BYN'}"
+                                        TextColor="Black"
+                                        VerticalOptions="End" />
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            Grid.Column="0"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding ChangeCountCommand}"
+                                            CommandParameter="Minus"
+                                            HorizontalOptions="Start"
+                                            Source="minus.png" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontFamily="comforta"
+                                            HorizontalOptions="Center"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            Text="{Binding Count, StringFormat='Количество книг: {0}'}"
+                                            TextColor="Black"
+                                            VerticalOptions="End"
+                                            WidthRequest="220" />
+                                        <ImageButton
+                                            Grid.Column="2"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding ChangeCountCommand}"
+                                            CommandParameter="Plus"
+                                            HorizontalOptions="End"
+                                            Source="plus.png" />
+                                    </Grid>
+                                </Grid>
+                            </yummy:PancakeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button
+                    Margin="15,10"
+                    Padding="20,5"
+                    BackgroundColor="#1AC7A8"
+                    Clicked="Button_Clicked"
+                    CornerRadius="17"
+                    FontFamily="comforta"
+                    HeightRequest="35"
+                    Text="Оформить заказ"
+                    TextColor="White"
+                    VerticalOptions="End" />
+
+            </StackLayout>
+        </Grid>
+
+        <yummy:PancakeView
+            x:Name="SlidePanelOrder"
+            BackgroundColor="WhiteSmoke"
+            CornerRadius="60,60,0,0"
+            HeightRequest="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="Gray"
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="90" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="comforta"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="Итого"
+                        TextColor="#1AC7A8"
+                        VerticalTextAlignment="Center" />
+
+                    <StackLayout Grid.Row="2" Margin="0,25,0,0">
+                        <Label
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="{Binding Price, StringFormat='Итого: {0} BYN'}"
+                            TextColor="Black" />
+                        <Button
+                            Margin="30,15,30,0"
+                            BackgroundColor="#1AC7A8"
+                            Command="{Binding MakeOrderCommand}"
+                            CornerRadius="20"
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Заказать"
+                            TextColor="GhostWhite"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </yummy:PancakeView>
+    </Grid>
+</ContentPage>

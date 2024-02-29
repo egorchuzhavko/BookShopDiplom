@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="BookShop.mvvm.View.AdminTabbedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:BookShop.mvvm.View"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="White"
+    NavigationPage.HasNavigationBar="False"
+    SelectedTabColor="#1AC7A8"
+    UnselectedTabColor="Black">
+    <pages:AdminOrderPage Title="Заказы" IconImageSource="orders.png" />
+    <pages:AdminBookPage Title="Книги" IconImageSource="catalog.png" />
+    <pages:AdminFeedbackPage Title="Отзывы" IconImageSource="feedback.png" />
+</TabbedPage>

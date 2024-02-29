@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminAllSupportPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="DarkGray">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="0,50,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Text="Активные запросы в поддержку"
+                TextColor="White" />
+
+            <CollectionView
+                x:Name="AllOrdersList"
+                Margin="20,10"
+                ItemsSource="{Binding Supportlist}"
+                SelectedItem="{Binding SelectedRequest}"
+                SelectionChangedCommand="{Binding RequestSelectionCommand}"
+                SelectionMode="Single"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="10"
+                        Orientation="Vertical"
+                        Span="1"
+                        VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <yummy:PancakeView CornerRadius="15">
+                            <Grid Padding="10,10" BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout Orientation="Vertical">
+                                    <Label
+                                        FontFamily="comforta"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Id, StringFormat='Запрос №{0}'}"
+                                        TextColor="Black" />
+                                </StackLayout>
+                            </Grid>
+                        </yummy:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

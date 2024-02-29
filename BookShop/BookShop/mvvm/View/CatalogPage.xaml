@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.ViewModel.CatalogPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:BookShop.mvvm.ViewModel"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Grid
+            Padding="10"
+            BackgroundColor="DarkGray"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Margin="0,45,0,0">
+                <Label
+                    FontFamily="comforta"
+                    FontSize="35"
+                    HorizontalOptions="Center"
+                    Text="Книги на ваш"
+                    TextColor="White" />
+                <Label
+                    Margin="0,-10,0,0"
+                    FontFamily="comforta"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="выбор"
+                    TextColor="White" />
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <SearchBar
+                    FontFamily="comforta"
+                    Placeholder="Введите название книги"
+                    PlaceholderColor="White"
+                    Text="{Binding SearchText}"
+                    TextColor="White" />
+
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Clicked="Button_Clicked"
+                    HeightRequest="32"
+                    Source="more.png"
+                    WidthRequest="32" />
+
+            </StackLayout>
+
+            <RefreshView
+                Grid.Row="2"
+                Command="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                    x:Name="BooksList"
+                    Margin="0,40,0,0"
+                    ItemsSource="{Binding Searchbooks}"
+                    SelectedItem="{Binding SelectedBook}"
+                    SelectionChangedCommand="{Binding SelectionCommand}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Vertical"
+                            Span="2"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView CornerRadius="15">
+                                <Grid
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    HeightRequest="180"
+                                    WidthRequest="145">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding Image}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="115" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontFamily="comforta"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2"
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="End"
+                                        WidthRequest="80" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontFamily="comforta"
+                                        HorizontalOptions="End"
+                                        Text="{Binding Price, StringFormat='{0} BYN'}"
+                                        TextColor="Black"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </yummy:PancakeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+        </Grid>
+
+        <yummy:PancakeView
+            x:Name="SlidePanelAuthorization"
+            BackgroundColor="White"
+            CornerRadius="40,40,0,0"
+            HeightRequest="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="Gray"
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="90" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="comforta"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="Фильтр"
+                        TextColor="#1AC7A8"
+                        VerticalTextAlignment="Center" />
+
+                    <StackLayout Grid.Row="2">
+                        <Entry
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Numeric"
+                            Placeholder="Цена от"
+                            PlaceholderColor="Black"
+                            Text="{Binding Pricefrom}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Entry
+                            Margin="30,0,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Numeric"
+                            Placeholder="Цена до"
+                            PlaceholderColor="Black"
+                            Text="{Binding PriceTo}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Picker
+                            Title="Жанр книги"
+                            Margin="30,0,30,0"
+                            FontFamily="comforta"
+                            ItemDisplayBinding="{Binding Value}"
+                            ItemsSource="{Binding Statusesbook}"
+                            SelectedItem="{Binding Selectedstatus}"
+                            TextColor="Black"
+                            TitleColor="Black" />
+
+                        <Button
+                            Margin="30,15,30,0"
+                            BackgroundColor="#1AC7A8"
+                            Command="{Binding FilterCommand}"
+                            CornerRadius="20"
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Искать"
+                            TextColor="GhostWhite"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </yummy:PancakeView>
+    </Grid>
+</ContentPage>

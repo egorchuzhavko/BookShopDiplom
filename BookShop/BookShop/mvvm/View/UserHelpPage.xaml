@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.UserHelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="DarkGray">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="0,50,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Text="Меню поддержки"
+                TextColor="White" />
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Button
+                    Margin="15,10"
+                    BackgroundColor="#1AC7A8"
+                    Command="{Binding CheckRequestsCommand}"
+                    CornerRadius="17"
+                    FontFamily="comforta"
+                    Text="Просмотреть свои запросы"
+                    TextColor="White" />
+
+                <Button
+                    Margin="15,10"
+                    BackgroundColor="#1AC7A8"
+                    Command="{Binding CreateRequestCommand}"
+                    CornerRadius="17"
+                    FontFamily="comforta"
+                    Text="Создать запрос в поддержку"
+                    TextColor="White" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

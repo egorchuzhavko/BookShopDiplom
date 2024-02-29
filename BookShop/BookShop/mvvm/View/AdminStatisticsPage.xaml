@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminStatisticsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="DarkGray"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout Margin="20,40">
+        <Label
+            Margin="0,40,0,20"
+            FontFamily="comforta"
+            FontSize="30"
+            HorizontalOptions="Center"
+            Text="Статистика"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding UsersCount, StringFormat='Количество пользователей: {0}'}"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding Remainingbookscount, StringFormat='Количество оставшихся книг: {0}'}"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding Soldbookscount, StringFormat='Количество проданных книг: {0}'}"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding Allorderscount, StringFormat='Количество всех заказов: {0}'}"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding Activeorderscount, StringFormat='Количество активных заказов: {0}'}"
+            TextColor="White" />
+
+        <Label
+            Margin="0,25,0,20"
+            FontFamily="comforta"
+            FontSize="17"
+            HorizontalOptions="Start"
+            Text="{Binding Rejectedorderscount, StringFormat='Количество отменённых заказов: {0}'}"
+            TextColor="White" />
+    </StackLayout>
+</ContentPage>

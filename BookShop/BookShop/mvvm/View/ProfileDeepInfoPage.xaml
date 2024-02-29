@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.ProfileDeepInfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Grid BackgroundColor="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Row="0"
+            Margin="20,40,20,20"
+            Aspect="AspectFit"
+            HeightRequest="200"
+            HorizontalOptions="Center"
+            Source="profileforsettings.png"
+            VerticalOptions="Center"
+            WidthRequest="200" />
+        <StackLayout
+            Grid.Row="1"
+            Padding="30,50"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical">
+            <BoxView
+                Margin="0,20,0,20"
+                BackgroundColor="#1AC7A8"
+                HeightRequest="2"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start" />
+            <Entry
+                FontFamily="comforta"
+                FontSize="20"
+                Placeholder="Фамилия"
+                PlaceholderColor="White"
+                Text="{Binding User.Surname}"
+                TextColor="White" />
+            <Entry
+                Margin="0,0,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                Placeholder="Имя"
+                PlaceholderColor="White"
+                Text="{Binding User.Name}"
+                TextColor="White" />
+            <Entry
+                Margin="0,0,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                IsReadOnly="True"
+                Placeholder="Email"
+                PlaceholderColor="White"
+                Text="{Binding User.Email}"
+                TextColor="White" />
+            <Entry
+                Margin="0,0,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                IsPassword="True"
+                Placeholder="Пароль"
+                PlaceholderColor="White"
+                Text="{Binding User.Password}"
+                TextColor="White" />
+            <Button
+                Margin="0,40"
+                BackgroundColor="#1AC7A8"
+                Command="{Binding ChangeInfoCommand}"
+                CornerRadius="17"
+                FontFamily="comforta"
+                Text="Сохранить"
+                TextColor="White" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

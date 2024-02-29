@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminReportMenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Margin="0,50,0,30"
+            FontFamily="comforta"
+            FontSize="22"
+            HorizontalOptions="Center"
+            Text="Формирование отчётов"
+            TextColor="#1AC7A8"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="2"
+            Margin="30,0,30,40"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding CreateReportCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Создать отчёт"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+
+        <Grid Grid.Row="1">
+            <StackLayout>
+                <Label
+                    Grid.Row="0"
+                    Margin="0,0,0,0"
+                    FontFamily="comforta"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Выберите параметр для формирования отчёта:"
+                    TextColor="#1AC7A8"
+                    VerticalOptions="Center" />
+
+                <Picker
+                    Title="Параметр"
+                    Margin="30,0,30,0"
+                    FontFamily="comforta"
+                    HorizontalTextAlignment="Center"
+                    ItemDisplayBinding="{Binding Value}"
+                    ItemsSource="{Binding ReportTypes}"
+                    SelectedItem="{Binding SelectedType}"
+                    TextColor="#1AC7A8"
+                    TitleColor="#1AC7A8" />
+
+                <StackLayout Margin="20,50,20,0" Orientation="Vertical">
+                    <Label
+                        FontFamily="comforta"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Выберите дату для статистики по дате"
+                        TextColor="#1AC7A8" />
+
+                    <Label
+                        Margin="0,40,0,0"
+                        FontFamily="comforta"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Text="Дата от: "
+                        TextColor="#1AC7A8" />
+                    <DatePicker
+                        Margin="0,10,0,0"
+                        Date="{Binding SelectedDateFrom}"
+                        MinimumDate="2023-01-01"
+                        TextColor="#1AC7A8" />
+
+                    <Label
+                        Margin="0,30,0,0"
+                        FontFamily="comforta"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Text="Дата до: "
+                        TextColor="#1AC7A8" />
+                    <DatePicker
+                        x:Name="DateTo"
+                        Margin="0,10,0,0"
+                        Date="{Binding SelectedDateTo}"
+                        MinimumDate="2023-01-01"
+                        TextColor="#1AC7A8" />
+                </StackLayout>
+
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

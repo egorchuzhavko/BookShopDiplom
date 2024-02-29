@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:local="clr-namespace:BookShop.mvvm.Model"
+    xmlns:vm="clr-namespace:BookShop.mvvm.ViewModel"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="baseStyle" TargetType="Label">
+                <Setter Property="XAlign" Value="Start" />
+                <Setter Property="YAlign" Value="Start" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontAttributes" Value="None" />
+            </Style>
+            <local:BooleanToObjectConverter x:Key="boolToStyleEmail" x:TypeArguments="Style">
+                <local:BooleanToObjectConverter.FalseObject>
+                    <Style BasedOn="{StaticResource baseStyle}" TargetType="Label">
+                        <Setter Property="TextColor" Value="#F44336" />
+                        <Setter Property="Text" Value="Введите верную почту" />
+                    </Style>
+                </local:BooleanToObjectConverter.FalseObject>
+
+            </local:BooleanToObjectConverter>
+            <local:BooleanToObjectConverter x:Key="boolToStylePassword" x:TypeArguments="Style">
+                <local:BooleanToObjectConverter.FalseObject>
+                    <Style BasedOn="{StaticResource baseStyle}" TargetType="Label">
+                        <Setter Property="TextColor" Value="#F44336" />
+                        <Setter Property="Text" Value="Пароль должен иметь хотя бы 1 большую, 1 маленькую буквы, 1 символ и 1 цифру" />
+                    </Style>
+                </local:BooleanToObjectConverter.FalseObject>
+            </local:BooleanToObjectConverter>
+            <local:BooleanToObjectConverter x:Key="boolToStyleConfirmPassword" x:TypeArguments="Style">
+                <local:BooleanToObjectConverter.FalseObject>
+                    <Style BasedOn="{StaticResource baseStyle}" TargetType="Label">
+                        <Setter Property="TextColor" Value="#F44336" />
+                        <Setter Property="Text" Value="Пароли не совпадают." />
+                    </Style>
+                </local:BooleanToObjectConverter.FalseObject>
+            </local:BooleanToObjectConverter>
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:StartPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid BackgroundColor="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" VerticalOptions="End">
+                <Label
+                    FontFamily="comforta"
+                    FontSize="70"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Книжный магазин"
+                    TextColor="White" />
+                <Label
+                    FontFamily="comforta"
+                    FontSize="40"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Арбис-бел"
+                    TextColor="White" />
+            </StackLayout>
+
+            <Button
+                Grid.Row="2"
+                Background="Transparent"
+                Clicked="Button_Clicked"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                FontFamily="comforta"
+                FontSize="36"
+                HeightRequest="57"
+                HorizontalOptions="FillAndExpand"
+                Opacity="1"
+                Text="Войти"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="400" />
+
+            <Button
+                Grid.Row="2"
+                Margin="0,100,0,0"
+                Background="Transparent"
+                Clicked="Button_Clicked1"
+                CornerRadius="10"
+                FontFamily="comforta"
+                FontSize="Small"
+                HeightRequest="36"
+                HorizontalOptions="FillAndExpand"
+                Opacity="1"
+                Text="Нет аккаунта? Зарегистрироваться"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="400" />
+        </Grid>
+
+        <yummy:PancakeView
+            x:Name="SlidePanelAuthorization"
+            BackgroundColor="White"
+            CornerRadius="60,60,0,0"
+            HeightRequest="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="Gray"
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="90" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="comforta"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="Вход"
+                        TextColor="#1AC7A8"
+                        VerticalTextAlignment="Center" />
+
+                    <StackLayout Grid.Row="2">
+                        <Entry
+                            x:Name="LoginAuthorize"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Почта"
+                            PlaceholderColor="Black"
+                            Text="{Binding EmailAvtorize}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Entry
+                            x:Name="PasswordAuthorize"
+                            Margin="30,0,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Пароль"
+                            PlaceholderColor="Black"
+                            Text="{Binding PasswordAvtorize}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Button
+                            Margin="30,15,30,0"
+                            BackgroundColor="#1AC7A8"
+                            Command="{Binding AuthorizationCommand}"
+                            CornerRadius="20"
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Войти"
+                            TextColor="GhostWhite"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </yummy:PancakeView>
+
+        <yummy:PancakeView
+            x:Name="SlidePanelRegistration"
+            BackgroundColor="White"
+            CornerRadius="60,60,0,0"
+            HeightRequest="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="Gray"
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="90" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped1" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="comforta"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="Регистрация"
+                        TextColor="#1AC7A8"
+                        VerticalTextAlignment="Center" />
+
+                    <StackLayout Grid.Row="2">
+                        <Entry
+                            x:Name="txtFirstName"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Ваше имя"
+                            PlaceholderColor="Black"
+                            Text="{Binding NameReg}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Entry
+                            x:Name="txtLastName"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Ваша фамилия"
+                            PlaceholderColor="Black"
+                            Text="{Binding SurnameReg}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand" />
+                        <Entry
+                            x:Name="txtEmail"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Почта"
+                            PlaceholderColor="Black"
+                            Text="{Binding EmailReg}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry.Behaviors>
+                                <local:EmailValidatorBehavior x:Name="emailValidator" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label
+                            x:Name="lblValEmal"
+                            Margin="30,0,30,0"
+                            FontSize="Micro"
+                            HeightRequest="20"
+                            Style="{Binding Source={x:Reference emailValidator}, Path=IsValid, Converter={StaticResource boolToStyleEmail}}" />
+                        <Entry
+                            x:Name="txtPassword"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Пароль"
+                            PlaceholderColor="Black"
+                            Text="{Binding PasswordReg}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry.Behaviors>
+                                <local:PasswordValidationBehavior x:Name="passwordValidator" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label
+                            x:Name="lblValPassword"
+                            Margin="30,-10,30,0"
+                            FontSize="Micro"
+                            HeightRequest="31"
+                            Style="{Binding Source={x:Reference passwordValidator}, Path=IsValid, Converter={StaticResource boolToStylePassword}}" />
+                        <Entry
+                            x:Name="txtConfirmPassword"
+                            Margin="30,15,30,0"
+                            FontFamily="comforta"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Повторите пароль"
+                            PlaceholderColor="Black"
+                            Text="{Binding RepeatPasswordReg}"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand">
+                            <Entry.Behaviors>
+                                <local:CompareValidationBehavior
+                                    x:Name="confirmPasswordValidator"
+                                    BindingContext="{x:Reference txtPassword}"
+                                    Text="{Binding Text}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label
+                            x:Name="lblValConfirmPassword"
+                            Margin="30,-10,30,0"
+                            FontSize="Micro"
+                            HeightRequest="20"
+                            Style="{Binding Source={x:Reference confirmPasswordValidator}, Path=IsValid, Converter={StaticResource boolToStyleConfirmPassword}}" />
+
+                        <Button
+                            Margin="30,15,30,0"
+                            BackgroundColor="#1AC7A8"
+                            Command="{Binding RegistrationCommand}"
+                            CornerRadius="20"
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Зарегистрироваться"
+                            TextColor="GhostWhite"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+
+                </Grid>
+            </ScrollView>
+        </yummy:PancakeView>
+    </Grid>
+
+</ContentPage>

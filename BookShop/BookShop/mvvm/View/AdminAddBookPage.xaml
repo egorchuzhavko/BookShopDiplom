@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminAddBookPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    BackgroundColor="DarkGray"
+    NavigationPage.HasNavigationBar="False">
+    <ScrollView Margin="20,40">
+        <StackLayout>
+            <Label
+                Grid.Row="0"
+                Margin="0,40,0,20"
+                FontFamily="comforta"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text="Добавить Книгу"
+                TextColor="White" />
+
+            <Entry
+                FontFamily="comforta"
+                Placeholder="Введите название книги:"
+                PlaceholderColor="White"
+                Text="{Binding Bookname}"
+                TextColor="White" />
+
+            <Entry
+                FontFamily="comforta"
+                Keyboard="Numeric"
+                Placeholder="Введите цену:"
+                PlaceholderColor="White"
+                Text="{Binding Price}"
+                TextColor="White" />
+
+            <Picker
+                Title="Введите жанр:"
+                FontFamily="comforta"
+                ItemDisplayBinding="{Binding Value}"
+                ItemsSource="{Binding Statusesbook}"
+                SelectedItem="{Binding Selectedstatus}"
+                TextColor="White"
+                TitleColor="White" />
+
+            <Entry
+                FontFamily="comforta"
+                Placeholder="Введите автора:"
+                PlaceholderColor="White"
+                Text="{Binding Author}"
+                TextColor="White" />
+
+            <Entry
+                FontFamily="comforta"
+                Keyboard="Numeric"
+                Placeholder="Введите количество:"
+                PlaceholderColor="White"
+                Text="{Binding Count}"
+                TextColor="White" />
+
+            <Frame>
+                <Editor
+                    BackgroundColor="White"
+                    FontFamily="comforta"
+                    FontSize="10"
+                    HeightRequest="200"
+                    Placeholder="Введите описание"
+                    PlaceholderColor="Black"
+                    Text="{Binding Description}"
+                    TextColor="Black" />
+            </Frame>
+
+
+            <Label
+                Margin="0,25,0,7"
+                FontFamily="comforta"
+                FontSize="17"
+                HorizontalOptions="Start"
+                Text="Выберите фото книги:"
+                TextColor="White" />
+            <ImageButton
+                Aspect="AspectFit"
+                Command="{Binding OpenImageCommand}"
+                HeightRequest="200"
+                Source="{Binding ImagePath}"
+                WidthRequest="200" />
+
+            <Button
+                BackgroundColor="#1AC7A8"
+                Command="{Binding AddBookCommand}"
+                CornerRadius="17"
+                FontFamily="comforta"
+                Text="Добавить книгу"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

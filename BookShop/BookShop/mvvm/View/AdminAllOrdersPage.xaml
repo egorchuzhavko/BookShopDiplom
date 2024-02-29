@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminAllOrdersPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+
+    <Grid>
+        <Grid BackgroundColor="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Margin="0,60,0,20"
+                FontFamily="comforta"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text="Все заказы"
+                TextColor="White" />
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <SearchBar
+                    FontFamily="comforta"
+                    Keyboard="Numeric"
+                    Placeholder="Введите номер заказа"
+                    PlaceholderColor="White"
+                    Text="{Binding Idofsearchorder}"
+                    TextColor="White" />
+
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Clicked="Button_Clicked"
+                    HeightRequest="32"
+                    Source="more.png"
+                    WidthRequest="32" />
+
+            </StackLayout>
+
+            <RefreshView
+                Grid.Row="2"
+                Command="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                    x:Name="AllOrdersList"
+                    Margin="20,10"
+                    ItemsSource="{Binding SearchOrders}"
+                    SelectedItem="{Binding SelectedOrder}"
+                    SelectionChangedCommand="{Binding OrderSelectionCommand}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Vertical"
+                            Span="1"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView CornerRadius="15">
+                                <Grid Padding="10,10" BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Orientation="Vertical">
+                                        <Label
+                                            FontFamily="comforta"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Id, StringFormat='Заказ №{0}'}"
+                                            TextColor="Black" />
+                                        <BoxView
+                                            Margin="10,0"
+                                            BackgroundColor="#1AC7A8"
+                                            HeightRequest="2"
+                                            HorizontalOptions="FillAndExpand" />
+                                        <Label
+                                            FontFamily="comforta"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Price, StringFormat='Цена заказа: {0}'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontFamily="comforta"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding DateOfOrder, StringFormat='Дата заказа: {0}'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            FontFamily="comforta"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Status, StringFormat='Статус: {0}'}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                </Grid>
+                            </yummy:PancakeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+
+        <yummy:PancakeView
+            x:Name="SlidePanelAuthorization"
+            BackgroundColor="White"
+            CornerRadius="40,40,0,0"
+            HeightRequest="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <BoxView
+                            Margin="10"
+                            BackgroundColor="Gray"
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="90" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="comforta"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="Фильтр"
+                        TextColor="#1AC7A8"
+                        VerticalTextAlignment="Center" />
+
+                    <StackLayout Grid.Row="2">
+
+                        <Picker
+                            Title="Статус заказа"
+                            Margin="30,0,30,0"
+                            FontFamily="comforta"
+                            ItemDisplayBinding="{Binding Value}"
+                            ItemsSource="{Binding OrderStatuses}"
+                            SelectedItem="{Binding SelectedStatus}"
+                            TextColor="Black"
+                            TitleColor="Black" />
+
+                        <Button
+                            Margin="30,15,30,0"
+                            BackgroundColor="#1AC7A8"
+                            Command="{Binding FilterCommand}"
+                            CornerRadius="20"
+                            FontFamily="comforta"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Искать"
+                            TextColor="GhostWhite"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </yummy:PancakeView>
+    </Grid>
+</ContentPage>

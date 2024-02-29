@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.UserCheckRequest"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="DarkGray">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="0,50,0,20"
+                FontFamily="comforta"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SupportRequest.Id, StringFormat='Запрос №{0}'}"
+                TextColor="White" />
+
+            <ScrollView>
+                <StackLayout>
+                    <Label
+                        Margin="20,30,20,20"
+                        FontFamily="comforta"
+                        FontSize="16"
+                        Text="{Binding SupportRequest.Question, StringFormat='Вопрос - {0}'}"
+                        TextColor="White" />
+
+                    <Label
+                        Margin="20,30,20,20"
+                        FontFamily="comforta"
+                        FontSize="16"
+                        Text="{Binding SupportRequest.Answer, StringFormat='Ответ - {0}'}"
+                        TextColor="White" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

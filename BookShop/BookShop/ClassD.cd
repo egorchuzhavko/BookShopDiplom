@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BookShop.mvvm.Model.Book">
+    <Position X="10.25" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BACCAAAAA0AgAAgAgAIAgAQAgAAAARAAAAAIAQAgQAI=</HashCode>
+      <FileName>mvvm\Model\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.BookOrder">
+    <Position X="6" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAQAgAgAABAABAAAAQAAABAAAAAAAAAAAAhAAA=</HashCode>
+      <FileName>mvvm\Model\BookOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.Feedback">
+    <Position X="7.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAEAgAABIAAAAAAAAAAAAAAQAAAAAACAAAg=</HashCode>
+      <FileName>mvvm\Model\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.Order">
+    <Position X="0.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAACEAAEASAGAIAgAAAAAAAAgAAGAABAoIAACAAAAIA=</HashCode>
+      <FileName>mvvm\Model\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.Support">
+    <Position X="0.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABCAAQQCAAAAAAgAAAAAAAAAAAAAAAEAAAAAgAAAAA=</HashCode>
+      <FileName>mvvm\Model\Support.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.User">
+    <Position X="3.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAKCAAAKACAAAAAAEIAAAAQABQAAAAACAAAAEAAAAAQ=</HashCode>
+      <FileName>mvvm\Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

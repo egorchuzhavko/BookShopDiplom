@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BookShop.mvvm.View.AdminStartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout
+        Margin="0,50"
+        HorizontalOptions="Fill"
+        VerticalOptions="FillAndExpand">
+        <Label
+            FontFamily="comforta"
+            FontSize="25"
+            HorizontalOptions="Center"
+            Text="Админ панель"
+            TextColor="#1AC7A8"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding OpenStatisticsCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Статистика"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding OpenOrdersCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Заказы"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding OpenAllBooksCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Все книги"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding OpenAddBookCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Добавить книгу"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding OpenFeedbacksCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Отзывы"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding SupportListCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Поддержка"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <Button
+            Margin="30,20"
+            BackgroundColor="#1AC7A8"
+            Command="{Binding ReportCommand}"
+            CornerRadius="17"
+            FontFamily="comforta"
+            Text="Отчёты"
+            TextColor="White"
+            VerticalOptions="Center" />
+    </StackLayout>
+</ContentPage>

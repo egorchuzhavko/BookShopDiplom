@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="BookShop.mvvm.ViewModel.TabbedPageContainer"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:BookShop.mvvm.ViewModel"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="WhiteSmoke"
+    NavigationPage.HasNavigationBar="False"
+    SelectedTabColor="#1AC7A8"
+    UnselectedTabColor="Black">
+    <pages:CatalogPage Title="Каталог" IconImageSource="catalog.png" />
+    <pages:ShoppingCartPage Title="Корзина" IconImageSource="shoppingcart.png" />
+    <pages:ProfilePage Title="Профиль" IconImageSource="profile.png" />
+</TabbedPage>

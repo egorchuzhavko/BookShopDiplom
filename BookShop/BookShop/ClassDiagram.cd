@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BookShop.mvvm.Model.Book">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BACCAAAAA0AgAAgAgAIAgAQAgAAAARAAAAAIAAAgQAI=</HashCode>
+      <FileName>mvvm\Model\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.BookOrder">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAQAgAgAABAAAAAAAQAAABAAAAAAAAAAAAhAAA=</HashCode>
+      <FileName>mvvm\Model\BookOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.Feedback">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAEAgAABIAAAAAAAAAAAAAAQAAAAAACAAAg=</HashCode>
+      <FileName>mvvm\Model\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.Order">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAACAAAEASAGAIAgAAAAAAAAgAACAABAoIAACAAAAIA=</HashCode>
+      <FileName>mvvm\Model\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookShop.mvvm.Model.User">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAKCAAAKACAAAAAAEIAAAAQABAAAAAACAAAAEAAAAAQ=</HashCode>
+      <FileName>mvvm\Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
